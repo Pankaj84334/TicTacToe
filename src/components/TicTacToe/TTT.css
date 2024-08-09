@@ -1,0 +1,231 @@
+.head{
+    z-index: 10;
+    color: white;
+}
+.heading{
+    color: aliceblue;
+    background-color: rgb(5, 3, 38);
+    text-align: center;
+    z-index: -10;
+    padding: 20px;
+    font-size: 23px;
+    top:-1px;
+    position: fixed;
+    font-weight: 700;
+    width: 100%;
+}
+.line{
+    width: 10px;
+    background-color: red;
+    position: absolute;
+    border-radius: 10px;
+}
+.help{
+    background-color: black;
+    border: 2px solid rgb(40, 44, 52);
+    border-radius: 8px;
+    margin: 1px;
+    font-size: 78px;
+    padding: 0px 0px 23px;
+}
+.help:hover{
+    background-color: rgb(42, 42, 42);
+    cursor: pointer;
+}
+#lsign,#rsign,#psign{
+    padding:0px 25px 23px;
+}
+#hint{
+    position: relative;
+    left:-90px;
+}
+#undo{
+    position: relative;
+    left:-20px;
+}
+#new{
+    position: relative;
+    left:30px;
+}
+#for{
+    position: relative;
+    left:105px;
+}
+#back{
+    position: relative;
+    left:65px;
+}
+.EvaluationBar{
+    height: 45px;
+    width: 570px;
+    /* background-color: white; */
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.win{
+    color: white;
+    top: 8px;
+    position: relative;
+    font-size: 20px;
+}
+#bar2{
+    background-color: rgb(2, 2, 251);
+}
+.evaluation1{
+    color:white;
+    position: absolute;
+    left:35px;
+    top:30px;
+    display: inline-block;
+    font-weight: 500;
+}
+#bar1 {
+    /* background: linear-gradient(to right, rgb(0, 165, 0) 50%, rgb(19, 19, 173) 50%); */
+    background-size: 200% 100%;
+    animation: 15s ease-in-out forwards;
+}
+
+@keyframes slide1 {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+@keyframes slide2 {
+    0% {
+        background-position: 50% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+@keyframes in_middle{
+    0% {
+        background-position: 50% 0%;
+    }
+    100% {
+        background-position: 50% 0%;
+    }
+}
+.evaluation2{
+    color:white;
+    position: absolute;
+    right:35px;
+    top:30px;
+    display: inline-block;
+    font-weight: 500;
+}
+.welcomeb {
+    position: absolute;
+    text-align: center;
+    width: 580px;
+    top: max(50%,400px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: grid; */
+    background-color: rgb(9, 9, 44);
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #041c61;
+    padding: 20px; /* Added padding for better spacing */
+    place-items: center;
+}
+.aaa{
+    font-size:26px;background-color:white;text-decoration:none;
+    color:black;padding:0px 3px 0px 9px;border-radius:50%;
+}
+.welcome{
+    font-size: 50px;
+    padding: 10px;
+    background-color: black;
+    margin: 20px;
+    border-radius: 10px;
+}
+.playbutton{
+    margin:10px;
+    font-size: 30px;
+    /* width:80px; */
+    text-align: center;
+    color: white;
+    background-color: #025454;
+    padding: 7px 17px;
+    border-radius: 8px;
+}
+.playbutton:hover{
+    background-color: #619494;
+    cursor: pointer;
+}
+.icon-image{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    position: relative;
+    top: 7px;
+    left: 55px;
+}
+.sign-image{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    position: relative;
+    top: 7px;
+    left: 15px;
+}
+.icon-image:hover+.playbutton{
+    background-color: #619494;
+    cursor: pointer;
+}
+.board{
+    height: 560px;
+    display: flex;
+}
+.boxes{
+    height: 180px;
+    width: 180px;
+    display: flex;
+    cursor: pointer;
+    background-color: black;
+    border: 4px solid rgb(38, 38, 38);
+    border-radius: 12px;
+    margin: -1px 2px;
+}
+.sign-image:hover,.aaa:hover,.icon-image:hover,.tools:hover{
+    cursor: pointer;
+}
+@media(max-width:750px){
+    .welcomeb{
+       width:77%;
+       padding-top: calc(20px + 4*( 100vw - 750px)/60) ;
+       padding-left: calc(20px + 4*( 100vw - 750px)/60);
+    }
+    .board{
+        height: calc(560px + 4*( 100vw - 750px)/5);
+    }
+    .boxes{
+        height: calc(180px + 2*( 100vw - 750px)/8);
+        width: calc(180px + 2*( 100vw - 750px)/8);
+    }
+    .welcome{
+        font-size: calc(50px + 2*( 100vw - 750px)/27);
+    }
+    .playbutton{
+        font-size: calc(30px + 2*( 100vw - 750px)/67);
+    }
+    .icon-image{
+        height: calc(35px + 2*( 100vw - 750px)/69);
+        width: calc(35px + 2*( 100vw - 750px)/69);
+        top: calc(7px + ( 100vw - 750px)/209);
+        left: calc(55px + 2*( 100vw - 750px)/69);
+    }
+    .sign-image{
+        height: calc(35px + 2*( 100vw - 750px)/69);
+        width: calc(35px + 2*( 100vw - 750px)/69);
+        top: calc(7px + ( 100vw - 750px)/209);
+        left: calc(15px + 2*( 100vw - 750px)/69);
+    }
+    .aaa,.turn{
+        font-size: calc(25px + 2*( 100vw - 750px)/89);
+    }
+}
