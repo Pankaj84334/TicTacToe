@@ -94,33 +94,39 @@ const TTT = () => {
       requestAnimationFrame(animate);
     };
     const bar1Ref=useRef(null);
+    useEffect(()=>{
+      let bar1=bar1Ref.current;
+      bar1 = document.getElementById("bar1");
+      setTimeout(()=>{
+        if(i==1)setwintext(player2+" wins in "+j);
+        if(i==2)setwintext(player1+" wins in "+j);
+        // if(i==3)setwintext("Computer Won");
+      },300);
+      setTimeout(()=>{
+        if(i==3)bar1.style.background = 'linear-gradient(to right, rgb(0, 165, 0) 100%, rgb(19, 19, 173) 0%)';
+      },2150);
+    },[i])
     useEffect(() => {
       let bar1=bar1Ref.current;
       bar1 = document.getElementById("bar1");
       if(bar1){
         bar1.style.background = 'linear-gradient(to right, rgb(0, 165, 0) 100%, rgb(19, 19, 173) 0%)';
         if(!i)animatebar(bar1,50,50,1500);
-        else if((i===1||i===3)&&str==='in_middle'){
-          console.log('i',str+' is called');
-        animatebar(bar1,50,100,300);
-        setTimeout(()=>{
-          setstr('slide1');
-        },395);
+        else if((i===1)&&str==='in_middle'){
+        // console.log('i',str+' is called');
+          animatebar(bar1,50,100,300);
+          setTimeout(()=>{
+            setstr('slide1');
+          },300);
         }
         else if(i==2&&str==='in_middle'){
           animatebar(bar1,50,100,300);
+          setwintext(player2+" wins in "+j);
           setTimeout(()=>{
             setstr('slide2');
-          },395);
+          },300);
         }
       }
-        // // if(i===0){str="in_middle";}
-        // // if(i===2&&str==='in_middle'){
-          // //   animatebar(bar1,50,0,1500);
-          // //   str="slide";setwintext(player2+" wins in "+j);
-          // // }
-          // else if(str==='slide1')animatebar(bar1,100,100,1500);
-          // else if(str==='slide2')animatebar(bar1,0,0,1500);
     }, [i,player1,player2,j,str]);
         const EvaluationBar = () => {
           return (
@@ -131,14 +137,6 @@ const TTT = () => {
                 </div>
             );
         };
-    // const getAnimationName=()=>{
-    //   console.log("i is no changed to ",i,str);
-    //   // if(x)return;
-    //   return str;
-    //   // if(i===0)return "in_middle";
-    //   // if(i===1){return "slide1";}
-    //   // if(i===2){return "slide2";}
-    // }
       const Add = () => {
         const navigate = useNavigate();
         const handlenew = () => {
