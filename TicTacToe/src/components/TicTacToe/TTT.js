@@ -6,7 +6,6 @@ import Board2p from "./Board2p";
 import Boardcompeasy from "./Boardcompeasy";
 import Boardcompmedium from "./Boardcompmedium";
 import Boardcomphard from './Boardcomphard';
-
 const TTT = () => {
     const [dl1,setdl1]=useState(false);
     const [dl2,setdl2]=useState(false);
@@ -94,40 +93,52 @@ const TTT = () => {
       requestAnimationFrame(animate);
     };
     const bar1Ref=useRef(null);
-    useEffect(()=>{
-      let bar1=bar1Ref.current;
-      bar1 = document.getElementById("bar1");
-      setTimeout(()=>{
-        if(i==1)setwintext(player2+" wins in "+j);
-        if(i==2)setwintext(player1+" wins in "+j);
-        // if(i==3)setwintext("Computer Won");
-      },300);
-      setTimeout(()=>{
-        if(i==3)bar1.style.background = 'linear-gradient(to right, rgb(0, 165, 0) 100%, rgb(19, 19, 173) 0%)';
-      },2150);
-    },[i])
-    useEffect(() => {
-      let bar1=bar1Ref.current;
+    let bar1=bar1Ref.current;
       bar1 = document.getElementById("bar1");
       if(bar1){
-        bar1.style.background = 'linear-gradient(to right, rgb(0, 165, 0) 100%, rgb(19, 19, 173) 0%)';
-        if(!i)animatebar(bar1,50,50,1500);
-        else if((i===1)&&str==='in_middle'){
-        // console.log('i',str+' is called');
+        if(!i)bar1.style.background='linear-gradient(to right, rgb(0, 165, 0) 50%, rgb(19, 19, 173) 0%)';
+        if((i===1||i===3)&&str==='in_middle'){
           animatebar(bar1,50,100,300);
           setTimeout(()=>{
-            setstr('slide1');
-          },300);
+            setstr('slide');
+          },300)
         }
-        else if(i==2&&str==='in_middle'){
-          animatebar(bar1,50,100,300);
-          setwintext(player2+" wins in "+j);
+        if((i===2||i===4)&&str==='in_middle'){
+          animatebar(bar1,50,0,300);
           setTimeout(()=>{
-            setstr('slide2');
-          },300);
+            setstr('slide');
+          },300)
         }
+        if(i==1||i===3)bar1.style.background='linear-gradient(to right, rgb(0, 165, 0) 100%, rgb(19, 19, 173) 0%)';
+        if(i===2||i===4)bar1.style.background='linear-gradient(to right, rgb(0, 165, 0) 0%, rgb(19, 19, 173) 0%)';
       }
-    }, [i,player1,player2,j,str]);
+    useEffect(()=>{
+        if(i==1)setwintext(player2+" wins in "+j);
+        if(i==2)setwintext(player1+" wins in "+j);
+        if(i==3||i===4)setwintext("Computer Won");
+    },[i,j])
+    // useEffect(() => {
+    //   // let bar1=bar1Ref.current;
+    //   // bar1 = document.getElementById("bar1");
+    //   if(bar1){
+    //     bar1.style.background = 'linear-gradient(to right, rgb(0, 165, 0) 100%, rgb(19, 19, 173) 0%)';
+    //     if(!i)animatebar(bar1,50,50,1500);
+    //     else if((i===1)&&str==='in_middle'){
+    //     // console.log('i',str+' is called');
+    //       animatebar(bar1,50,100,300);
+    //       setTimeout(()=>{
+    //         setstr('slide1');
+    //       },300);
+    //     }
+    //     else if(i==2&&str==='in_middle'){
+    //       animatebar(bar1,50,100,300);
+    //       setwintext(player2+" wins in "+j);
+    //       setTimeout(()=>{
+    //         setstr('slide2');
+    //       },300);
+    //     }
+    //   }
+    // }, [i,player1,player2,j,str]);
         const EvaluationBar = () => {
           return (
                 <div className="EvaluationBar" id="bar1">
